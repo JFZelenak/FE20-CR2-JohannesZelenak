@@ -17,7 +17,7 @@ for(let i = 0; i < obj1.length; i++) {
         <p class="h6 card-text">${obj1[i].description}</p>
         <hr>
         <p class="h6 card-text">
-            <i class="bi bi-exclamation-triangle-fill"></i> Priority level: <span class="rounded bg-success myPriorityBtn">${obj1[i].priority}</span>
+            <i class="bi bi-exclamation-triangle-fill"></i> Priority level: <span class="btn btn-success myPriorityBtn">${obj1[i].priority}</span>
         </p>
         <p class="h6 card-text">Deadline: ${obj1[i].deadline}</p>
         <hr>
@@ -29,37 +29,18 @@ for(let i = 0; i < obj1.length; i++) {
     `;
 }
 
-// "taskName": "Take dog for a walk",
-//         "image": "./images/walk-dog.jpeg",
-//         "description": "You need to take Fluffy for a walk. He needs to run and be with other dogs!",
-//         "priority": 0,
-//         "deadline": "09.10.2023"
-
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(function(card, j){
-    card.addEventListener("click", function(){
-        if (obj1[j].haveRead==true) {
-            obj1[j].haveRead=false;
-            card.classList.add("haveNotRead");
-            card.classList.remove("haveRead");
-            overlays[j].classList.add("hide");
-        } else {
-            obj1[j].haveRead=true;
-            card.classList.add("haveRead");
-            card.classList.remove("haveNotRead");
-            overlays[j].classList.remove("hide");
-
-        }
-    })
-})
-
 const priorityBtns = document.querySelectorAll(".myPriorityBtn");
 const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
 
 priorityBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
-        obj1[j].priority
+        if(obj1[j].priority < 5){
+            obj1[j].priority++;
+            this.innerHTML = obj1[j].priority;
+            console.log(obj1[j].priority)
+        } else {
+            console.log(`${obj1[j].taskName} max. priority reached!`)
+        }        
     })
 })
