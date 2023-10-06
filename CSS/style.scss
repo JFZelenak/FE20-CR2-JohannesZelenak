@@ -92,9 +92,22 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
     }
 
     form > * {
+        display: inline;
         vertical-align: middle;
     }
     #signUp {
         width: 30%;
+    }
+}
+
+@media screen and (width < 768px) {
+    #footerID {
+
+        form > * {
+            display: block;
+        }
+        #signUp {
+            width: 100%;
+        }
     }
 }
