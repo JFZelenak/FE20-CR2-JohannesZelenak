@@ -18,6 +18,27 @@ body {
     background-image: $bg-gradient;
 }
 
+.myNavbar {
+    background-color: $third-color;
+    background-image: $bg-gradient;
+    border-bottom: 1px solid grey;
+    #listTaskSymbol {
+        font-size: 1.5rem;
+    }
+}
+
+#headline {
+    height: 200px;
+    background-image: url("../images/headline-bg-img.jpg");
+    background-size: cover;
+    background-position: center center;
+    border-bottom: 1px solid grey;
+
+    .card {
+        box-shadow: 0px 0px 8px $shadow-color;
+    }
+}
+
 .myCard {
     width: 18rem;
     box-shadow: 0px 0px 8px $shadow-color;
@@ -27,6 +48,7 @@ body {
         margin: 0.5rem 0rem;
     }
     opacity: 1;
+    text-decoration: none;
 }
 
 .myPriorityBtn {

@@ -22,14 +22,16 @@ for(let i = 0; i < obj1.length; i++) {
         <p class="h6 card-text">Deadline: ${obj1[i].deadline}</p>
         <hr>
         <div class="d-flex justify-content-end">
-            <a href="#" class="btn btn-danger myDeleteBtn ms-2"><i class="bi bi-trash"></i> Delete</a>
-            <a href="#" class="btn btn-success myDoneBtn ms-2"><i class="bi bi-check-circle"></i> Done</a>
+            <span class="btn btn-danger myDeleteBtn ms-2"><i class="bi bi-trash"></i> Delete</span>
+            <span class="btn btn-success myDoneBtn ms-2"><i class="bi bi-check-circle"></i> Done</span>
         </div>
     </div>
     `;
 }
 
 const cards = document.querySelectorAll(".myCard");
+const texts1 = document.querySelectorAll(".card-title");
+const texts2 = document.querySelectorAll(".card-text");
 const priorityBtns = document.querySelectorAll(".myPriorityBtn");
 const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
@@ -37,10 +39,10 @@ const doneBtns = document.querySelectorAll(".myDoneBtn");
 priorityBtns.forEach(function(btn, j){
 
     btn.addEventListener("click", function(){
-        if (obj1[j].priority == 4) {
+        if (obj1[j].priority == 4 || obj1[j].priority == 3 ) {
             btn.classList.remove("btn-warning");
             btn.classList.add("btn-danger");
-        } else if (obj1[j].priority < 4 && obj1[j].priority > 0) {
+        } else if (obj1[j].priority < 3 && obj1[j].priority > 0) {
             btn.classList.remove("btn-success");
             btn.classList.add("btn-warning");
         }
@@ -54,12 +56,28 @@ priorityBtns.forEach(function(btn, j){
     })
 })
 
-
-
 deleteBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
         cards[j].style.opacity = "0";
-        cards[j].style.transition = "1s all linear";
-        setTimeout(() => {cards[j].remove();}, 1100);
+        cards[j].style.transition = "700ms all linear";
+        setTimeout(() => {cards[j].remove();}, 700);
+    })
+})
+
+doneBtns.forEach(function(btn, j){
+    btn.addEventListener("click", function(){
+        if (cards[j].style.opacity == 0.5) {
+            texts1[j].style.textDecoration = "none";
+            cards[j].style.color = "black";
+            cards[j].style.boxShadow = "0px 0px 8px rgba(102, 95, 87, 0.5)";
+            cards[j].style.opacity = "1";
+        } else {
+            texts1[j].style.textDecoration = "line-through";
+            cards[j].style.color = "grey";
+            cards[j].style.boxShadow = "0px 0px 0px rgba(102, 95, 87, 0.5)";
+            cards[j].style.opacity = "0.5";
+        }
+
+
     })
 })

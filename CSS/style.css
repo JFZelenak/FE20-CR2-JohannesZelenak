@@ -10,12 +10,33 @@ body {
   background-image: linear-gradient(45deg, rgb(247, 246, 185), rgb(252, 206, 155));
 }
 
+.myNavbar {
+  background-color: rgb(247, 246, 185);
+  background-image: linear-gradient(45deg, rgb(247, 246, 185), rgb(252, 206, 155));
+  border-bottom: 1px solid grey;
+}
+.myNavbar #listTaskSymbol {
+  font-size: 1.5rem;
+}
+
+#headline {
+  height: 200px;
+  background-image: url("../images/headline-bg-img.jpg");
+  background-size: cover;
+  background-position: center center;
+  border-bottom: 1px solid grey;
+}
+#headline .card {
+  box-shadow: 0px 0px 8px rgba(102, 95, 87, 0.5);
+}
+
 .myCard {
   width: 18rem;
   box-shadow: 0px 0px 8px rgba(102, 95, 87, 0.5);
   background-color: rgb(247, 246, 185);
   background-image: linear-gradient(45deg, rgb(247, 246, 185), rgb(252, 206, 155));
   opacity: 1;
+  text-decoration: none;
 }
 .myCard hr {
   margin: 0.5rem 0rem;
