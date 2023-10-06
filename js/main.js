@@ -36,7 +36,7 @@ function createCards() {
         `;
     }
 }
-// check importance and choose color accordingly
+// check importance & choose color accordingly
 function checkImportance(i){
     let importanceClass = "btn-success";
     if (obj1[i].importance === 2 || obj1[i].importance === 3) {

@@ -76,13 +76,13 @@ body, .littleTaskText, .myNavbar, .myCard, #footerID {
 .myCard {
     width: 18rem;
     box-shadow: 0px 0px 8px $shadow-color;
+    opacity: 1;
+    text-decoration: none;
 
     hr {
         border-top: 1px solid $fifth-color;
         margin: 0.5rem 0rem;
     }
-    opacity: 1;
-    text-decoration: none;
 
     .myBookmarkBtn, .myThreeDots {
         cursor: pointer;
