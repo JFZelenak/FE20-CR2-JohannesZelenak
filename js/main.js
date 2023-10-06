@@ -4,7 +4,7 @@ let obj1 = JSON.parse(tasks);
 
 for(let i = 0; i < obj1.length; i++) {
     resultDiv.innerHTML += `    
-    <div class="card py-3 myCard">
+    <div class="card py-3 mx-2 myCard">
         <div class="d-flex justify-content-between">
             <p class="h6">Task</p>
             <div class="d-flex justify-content-end">
