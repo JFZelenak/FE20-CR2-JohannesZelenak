@@ -21,7 +21,7 @@ function createCards() {
             <div>
                 <hr>
                 <p class="h6 card-text">
-                    <i class="bi bi-exclamation-triangle-fill"></i> Priority level: <span class="btn btn-success myPriorityBtn">${obj1[i].priority}</span>
+                    <i class="bi bi-exclamation-triangle-fill"></i> Importance level: <span class="btn btn-success myImportanceBtn">${obj1[i].importance}</span>
                 </p>
                 <p class="h6 card-text">Deadline: ${obj1[i].deadline}</p>
                 <hr>
@@ -39,33 +39,33 @@ createCards();
 
 const sortBtn = document.querySelector(".mySortingBtn");
 sortBtn.addEventListener("click", function(){
-    obj1 = obj1.sort((a, b) => b.priority - a.priority);
+    obj1 = obj1.sort((a, b) => b.importance - a.importance);
     resultDiv.innerHTML = " ";
     createCards();
 })
 
 const cards = document.querySelectorAll(".myCard");
 const texts1 = document.querySelectorAll(".card-title");
-const priorityBtns = document.querySelectorAll(".myPriorityBtn");
+const importanceBtns = document.querySelectorAll(".myImportanceBtn");
 const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
 const bookmarkBtns = document.querySelectorAll(".myBookmarkBtn");
 
-priorityBtns.forEach(function(btn, j){
+importanceBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
-        if (obj1[j].priority == 4 || obj1[j].priority == 3 ) {
+        if (obj1[j].importance == 4 || obj1[j].importance == 3 ) {
             btn.classList.remove("btn-warning");
             btn.classList.add("btn-danger");
-        } else if (obj1[j].priority < 3 && obj1[j].priority > 0) {
+        } else if (obj1[j].importance < 3 && obj1[j].importance > 0) {
             btn.classList.remove("btn-success");
             btn.classList.add("btn-warning");
         }
 
-        if(obj1[j].priority < 5){
-            obj1[j].priority++;
-            this.innerHTML = obj1[j].priority;
+        if(obj1[j].importance < 5){
+            obj1[j].importance++;
+            this.innerHTML = obj1[j].importance;
         } else {
-            console.log(`${obj1[j].taskName} max. priority reached!`)
+            console.log(`${obj1[j].taskName} max. importance reached!`)
         }        
     })
 })
