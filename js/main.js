@@ -29,9 +29,41 @@ for(let i = 0; i < obj1.length; i++) {
     `;
 }
 
+const sortBtn = document.querySelector(".mySortingBtn");
+sortBtn.addEventListener("click", function(){
+
+    obj1 = obj1.sort((a, b) => b.priority - a.priority);
+    resultDiv.innerHTML = " ";
+    for(let i = 0; i < obj1.length; i++) {     
+        resultDiv.innerHTML += `    
+        <div class="card py-3 mx-2 myCard">
+            <div class="d-flex justify-content-between">
+                <p class="h6">Task</p>
+                <div class="d-flex justify-content-end">
+                    <i class="bi bi-bookmark"></i>
+                    <i class="bi bi-three-dots-vertical ms-2"></i>
+                </div>
+            </div>
+            <img src="${obj1[i].image}" class="img-thumbnail mb-2" alt="${obj1[i].taskName}">
+            <p class="h5 card-title">${obj1[i].taskName}</p>
+            <p class="h6 card-text">${obj1[i].description}</p>
+            <hr>
+            <p class="h6 card-text">
+                <i class="bi bi-exclamation-triangle-fill"></i> Priority level: <span class="btn btn-success myPriorityBtn">${obj1[i].priority}</span>
+            </p>
+            <p class="h6 card-text">Deadline: ${obj1[i].deadline}</p>
+            <hr>
+            <div class="d-flex justify-content-end">
+                <span class="btn btn-danger myDeleteBtn ms-2"><i class="bi bi-trash"></i> Delete</span>
+                <span class="btn btn-success myDoneBtn ms-2"><i class="bi bi-check-circle"></i> Done</span>
+            </div>
+        </div>
+        `;
+    }
+})
+
 const cards = document.querySelectorAll(".myCard");
 const texts1 = document.querySelectorAll(".card-title");
-const texts2 = document.querySelectorAll(".card-text");
 const priorityBtns = document.querySelectorAll(".myPriorityBtn");
 const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
@@ -78,38 +110,6 @@ doneBtns.forEach(function(btn, j){
             cards[j].style.opacity = "0.5";
         }
     })
-})
-
-const sortBtn = document.querySelector(".mySortingBtn");
-sortBtn.addEventListener("click", function(){
-    let newVar = obj1.sort((a, b) => b.priority - a.priority);
-    resultDiv.innerHTML = " ";
-    for(let i = 0; i < obj1.length; i++) {        
-        resultDiv.innerHTML += `    
-        <div class="card py-3 mx-2 myCard">
-            <div class="d-flex justify-content-between">
-                <p class="h6">Task</p>
-                <div class="d-flex justify-content-end">
-                    <i class="bi bi-bookmark"></i>
-                    <i class="bi bi-three-dots-vertical ms-2"></i>
-                </div>
-            </div>
-            <img src="${newVar[i].image}" class="img-thumbnail mb-2" alt="${newVar[i].taskName}">
-            <p class="h5 card-title">${newVar[i].taskName}</p>
-            <p class="h6 card-text">${newVar[i].description}</p>
-            <hr>
-            <p class="h6 card-text">
-                <i class="bi bi-exclamation-triangle-fill"></i> Priority level: <span class="btn btn-success myPriorityBtn">${newVar[i].priority}</span>
-            </p>
-            <p class="h6 card-text">Deadline: ${newVar[i].deadline}</p>
-            <hr>
-            <div class="d-flex justify-content-end">
-                <span class="btn btn-danger myDeleteBtn ms-2"><i class="bi bi-trash"></i> Delete</span>
-                <span class="btn btn-success myDoneBtn ms-2"><i class="bi bi-check-circle"></i> Done</span>
-            </div>
-        </div>
-        `;
-    }
 })
 
 const today = new Date();
