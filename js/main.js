@@ -110,3 +110,19 @@ bookmarkBtns.forEach(function(btn, j){
 
 const today = new Date();
 document.getElementById("year").innerHTML = today.getFullYear();
+
+let alertCount = 1;
+document.getElementById("alertCount").innerHTML = alertCount;
+
+for(let k = 0; k <= 9; k++) {
+    setTimeout(() => {
+        alertCount++;
+        document.getElementById("alertCount").innerHTML = alertCount;
+    }, randomNumber(40000,60000));
+}
+
+// random number generator
+function randomNumber(min, max) {
+    let randomNr = Math.floor(Math.random()*(max - min+1)+min);
+    return randomNr;
+}
