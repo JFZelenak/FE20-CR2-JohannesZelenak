@@ -128,7 +128,6 @@ for(let k = 1; k < 9; k++) {
             document.getElementById("alertCount").style.transition = "0.5s all linear";
         }, 500);
     }, randomNr1);
-
 }
 
 // random number generator
