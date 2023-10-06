@@ -12,6 +12,7 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
 
 .myNavbar {
   border-bottom: 1px solid darkgrey;
+  z-index: 1;
 }
 .myNavbar #listTaskSymbol {
   font-size: 1.5rem;
@@ -21,20 +22,23 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
   border: 1px solid darkgrey;
 }
 
+#headlineContainer {
+  position: relative;
+}
+
 #headline {
   height: 200px;
   background-image: url("../images/headline-bg-img.jpg");
   background-size: cover;
   background-position: center center;
   border-bottom: 1px solid darkgrey;
-  position: relative;
 }
 
 #headlineOverlay {
   position: absolute;
   background-color: rgba(102, 95, 87, 0.5);
   box-shadow: 0px 0px 8px rgba(102, 95, 87, 0.5);
-  top: 120px;
+  top: 60px;
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;

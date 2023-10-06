@@ -1,16 +1,11 @@
 const resultDiv = document.getElementById("resultDiv");
 
+// parse the data from the JSON string
 let obj1 = JSON.parse(tasks);
 
+// create cards functin via loop through array length
 function createCards() {
     for(let i = 0; i < obj1.length; i++) {
-
-        let importanceClass = "btn-success";
-        if (obj1[i].importance === 2 || obj1[i].importance === 3) {
-            importanceClass = "btn-warning";
-        } else if (obj1[i].importance >= 4) {
-            importanceClass = "btn-danger";
-        }
 
         resultDiv.innerHTML += `    
         <div class="card py-3 mx-2 myCard d-flex flex-column justify-content-between">
@@ -29,7 +24,7 @@ function createCards() {
             <div>
                 <hr>
                 <p class="h6 card-text">
-                    <i class="bi bi-exclamation-triangle-fill"></i> Importance level: <span class="btn ${importanceClass} myImportanceBtn">${obj1[i].importance}</span>
+                    <i class="bi bi-exclamation-triangle-fill"></i> Importance level: <span class="btn ${checkImportance(i)} myImportanceBtn">${obj1[i].importance}</span>
                 </p>
                 <p class="h6 card-text">Deadline: ${obj1[i].deadline}</p>
                 <hr>
@@ -42,13 +37,26 @@ function createCards() {
         `;
     }
 }
+// check importance and choose color accordingly
+function checkImportance(i){
+    let importanceClass = "btn-success";
+    if (obj1[i].importance === 2 || obj1[i].importance === 3) {
+        importanceClass = "btn-warning";
+    } else if (obj1[i].importance >= 4) {
+        importanceClass = "btn-danger";
+    }
+    return importanceClass
+}
 
+// call create cards function
 createCards();
 
+// sorting cards according to importance
 const sortBtn = document.querySelector(".mySortingBtn");
 sortBtn.addEventListener("click", function(){
     obj1 = obj1.sort((a, b) => b.importance - a.importance);
     resultDiv.innerHTML = " ";
+    // checkImportance(i);
     createCards();
 })
 
@@ -59,6 +67,7 @@ const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
 const bookmarkBtns = document.querySelectorAll(".myBookmarkBtn");
 
+// importance button
 importanceBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
         if (obj1[j].importance == 4 || obj1[j].importance == 3 ) {
@@ -78,6 +87,7 @@ importanceBtns.forEach(function(btn, j){
     })
 })
 
+// delete button
 deleteBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
         cards[j].style.opacity = "0";
@@ -86,6 +96,7 @@ deleteBtns.forEach(function(btn, j){
     })
 })
 
+// done button
 doneBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
         if (cards[j].style.opacity == 0.5) {
@@ -102,6 +113,7 @@ doneBtns.forEach(function(btn, j){
     })
 })
 
+// bookmark button
 bookmarkBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
         if (btn.classList.contains("bi-bookmark")) {
@@ -116,9 +128,11 @@ bookmarkBtns.forEach(function(btn, j){
     })
 })
 
+// year in copyright via Date object
 const today = new Date();
 document.getElementById("year").innerHTML = today.getFullYear();
 
+// random alert counter 
 let alertCount = 1;
 let randomNr1 = 0;
 let randomNr2 = 0;
