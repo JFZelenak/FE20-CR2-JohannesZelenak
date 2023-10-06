@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-body, #littleTaskText, .myNavbar, .myCard, #footerID {
+body, .littleTaskText, .myNavbar, .myCard, #footerID {
   background-color: rgb(247, 246, 185);
   background-image: linear-gradient(45deg, rgb(247, 246, 185), rgb(252, 206, 155));
 }
@@ -18,7 +18,7 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
   font-size: 1.5rem;
 }
 
-#littleTaskText {
+.littleTaskText {
   border: 1px solid darkgrey;
 }
 

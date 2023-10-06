@@ -14,7 +14,7 @@ $fifth-color: darkgrey;
 $shadow-color: rgba(102, 95, 87, 0.5);
 $bg-gradient: linear-gradient(45deg,$third-color,$fourth-color);
 
-body, #littleTaskText, .myNavbar, .myCard, #footerID {
+body, .littleTaskText, .myNavbar, .myCard, #footerID {
     background-color: $third-color;
     background-image: $bg-gradient;
 }
@@ -28,7 +28,7 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
     }
 }
 
-#littleTaskText {
+.littleTaskText {
     border: 1px solid $fifth-color;
 }
 

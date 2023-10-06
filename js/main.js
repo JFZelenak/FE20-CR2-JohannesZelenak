@@ -10,7 +10,7 @@ function createCards() {
         <div class="card py-3 mx-2 myCard d-flex flex-column justify-content-between">
             <div>
                 <div class="d-flex justify-content-between">
-                    <div class="h6 rounded p-1" id="littleTaskText">Task</div>
+                    <div class="h6 rounded p-1 littleTaskText">Task</div>
                     <div class="d-flex justify-content-end">
                         <i class="${isBookmarked(i)} myBookmarkBtn"></i>
                         <i class="bi bi-three-dots-vertical ms-2 myThreeDots"></i>
