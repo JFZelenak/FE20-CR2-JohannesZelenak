@@ -34,11 +34,19 @@ const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
 
 priorityBtns.forEach(function(btn, j){
+
     btn.addEventListener("click", function(){
+        if (obj1[j].priority == 4) {
+            btn.classList.remove("btn-warning");
+            btn.classList.add("btn-danger");
+        } else if (obj1[j].priority < 4 && obj1[j].priority > 0) {
+            btn.classList.remove("btn-success");
+            btn.classList.add("btn-warning");
+        }
+
         if(obj1[j].priority < 5){
             obj1[j].priority++;
             this.innerHTML = obj1[j].priority;
-            console.log(obj1[j].priority)
         } else {
             console.log(`${obj1[j].taskName} max. priority reached!`)
         }        
