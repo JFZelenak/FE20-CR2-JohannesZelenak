@@ -56,7 +56,6 @@ const sortBtn = document.querySelector(".mySortingBtn");
 sortBtn.addEventListener("click", function(){
     obj1 = obj1.sort((a, b) => b.importance - a.importance);
     resultDiv.innerHTML = " ";
-    // checkImportance(i);
     createCards();
 })
 
@@ -119,10 +118,14 @@ bookmarkBtns.forEach(function(btn, j){
         if (btn.classList.contains("bi-bookmark")) {
             btn.classList.remove("bi-bookmark");
             btn.classList.add("bi-bookmark-fill");
-            btn.style.color = "red";
+            btn.style.transform = "scaleY(3)";
+            btn.style.transition = "0.5s all linear";
+            btn.style.color = "#dc3545";
         } else {
             btn.classList.remove("bi-bookmark-fill");
             btn.classList.add("bi-bookmark");
+            btn.style.transform = "scaleY(1)";
+            btn.style.transition = "0.5s all linear";
             btn.style.color = "black";
         }
     })
