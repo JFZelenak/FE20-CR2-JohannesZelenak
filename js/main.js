@@ -112,13 +112,23 @@ const today = new Date();
 document.getElementById("year").innerHTML = today.getFullYear();
 
 let alertCount = 1;
+let randomNr1 = 0;
+let randomNr2 = 0;
 document.getElementById("alertCount").innerHTML = alertCount;
 
-for(let k = 0; k <= 9; k++) {
+for(let k = 1; k < 9; k++) {
+    randomNr1 += randomNumber(5000,20000);
     setTimeout(() => {
         alertCount++;
         document.getElementById("alertCount").innerHTML = alertCount;
-    }, randomNumber(40000,60000));
+        document.getElementById("alertCount").style.transform = "rotateY(360deg)";
+        document.getElementById("alertCount").style.transition = "0.5s all linear";
+        setTimeout(() => {
+            document.getElementById("alertCount").style.transform = "rotateY(0deg)";
+            document.getElementById("alertCount").style.transition = "0.5s all linear";
+        }, 500);
+    }, randomNr1);
+
 }
 
 // random number generator
