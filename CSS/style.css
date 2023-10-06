@@ -45,4 +45,18 @@ body {
 .myPriorityBtn {
   color: white;
   padding: 4px 10px;
+}
+
+#footerID {
+  border-top: 1px solid grey;
+  background-image: linear-gradient(45deg, rgb(247, 246, 185), rgb(252, 206, 155));
+}
+#footerID i {
+  font-size: 1.2rem;
+}
+#footerID form > * {
+  vertical-align: middle;
+}
+#footerID #signUp {
+  width: 30%;
 }/*# sourceMappingURL=style.css.map */

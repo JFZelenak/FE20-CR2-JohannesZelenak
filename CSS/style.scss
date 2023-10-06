@@ -22,6 +22,7 @@ body {
     background-color: $third-color;
     background-image: $bg-gradient;
     border-bottom: 1px solid grey;
+
     #listTaskSymbol {
         font-size: 1.5rem;
     }
@@ -54,4 +55,20 @@ body {
 .myPriorityBtn {
     color: $second-color;
     padding: 4px 10px;
+}
+
+#footerID {
+    border-top: 1px solid grey;
+    background-image: $bg-gradient;
+
+    i {
+        font-size: 1.2rem;
+    }
+
+    form > * {
+        vertical-align: middle;
+    }
+    #signUp {
+        width: 30%;
+    }
 }
