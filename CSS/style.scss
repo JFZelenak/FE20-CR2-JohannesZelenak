@@ -32,11 +32,23 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
     background-size: cover;
     background-position: center center;
     border-bottom: 1px solid grey;
-
-    .card {
-        box-shadow: 0px 0px 8px $shadow-color;
-    }
+    position: relative;
 }
+
+#headlineOverlay {
+    position: absolute;
+    background-color: $shadow-color;
+    box-shadow: 0px 0px 8px $shadow-color;
+    top: 120px;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 0;
+    text-align: center;
+    color: $second-color;
+    border: 0px solid black;
+}
+
 
 .mySortingBtn {
 
