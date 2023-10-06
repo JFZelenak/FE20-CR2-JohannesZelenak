@@ -13,14 +13,12 @@ $fourth-color: rgb(252, 206, 155);
 $shadow-color: rgba(102, 95, 87, 0.5);
 $bg-gradient: linear-gradient(45deg,$third-color,$fourth-color);
 
-body {
+body, #littleTaskText, .myNavbar, .myCard, #footerID {
     background-color: $third-color;
     background-image: $bg-gradient;
 }
 
 .myNavbar {
-    background-color: $third-color;
-    background-image: $bg-gradient;
     border-bottom: 1px solid grey;
 
     #listTaskSymbol {
@@ -45,14 +43,12 @@ body {
     i {
         font-size: 1.2rem;
     }
-    
 }
 
 .myCard {
     width: 18rem;
     box-shadow: 0px 0px 8px $shadow-color;
-    background-color: $third-color;
-    background-image: $bg-gradient;
+
     hr {
         margin: 0.5rem 0rem;
     }
@@ -67,7 +63,6 @@ body {
 
 #footerID {
     border-top: 1px solid grey;
-    background-image: $bg-gradient;
 
     i {
         font-size: 1.2rem;
@@ -79,19 +74,4 @@ body {
     #signUp {
         width: 30%;
     }
-}
-
-.bg-color-red {
-    background-color: red;
-    background-image: linear-gradient(45deg, red, darkred);
-}
-
-.bg-color-orange {
-    background-color: orange;
-    background-image: linear-gradient(45deg, orange, darkorange);
-}
-
-.bg-color-green {
-    background-color: green;
-    background-image: linear-gradient(45deg, green, darkgreen);
 }
