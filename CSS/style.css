@@ -53,6 +53,9 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
 .myCard hr {
   margin: 0.5rem 0rem;
 }
+.myCard .myBookmarkBtn, .myCard .myThreeDots {
+  cursor: pointer;
+}
 
 .myPriorityBtn {
   color: white;

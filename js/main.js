@@ -10,8 +10,8 @@ function createCards() {
                 <div class="d-flex justify-content-between">
                     <p class="h6 border border-black rounded p-1" id="littleTaskText">Task</p>
                     <div class="d-flex justify-content-end">
-                        <i class="bi bi-bookmark"></i>
-                        <i class="bi bi-three-dots-vertical ms-2"></i>
+                        <i class="bi bi-bookmark myBookmarkBtn"></i>
+                        <i class="bi bi-three-dots-vertical ms-2 myThreeDots"></i>
                     </div>
                 </div>
                 <img src="${obj1[i].image}" class="img-thumbnail mb-2" alt="${obj1[i].taskName}">
@@ -49,6 +49,7 @@ const texts1 = document.querySelectorAll(".card-title");
 const priorityBtns = document.querySelectorAll(".myPriorityBtn");
 const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
+const bookmarkBtns = document.querySelectorAll(".myBookmarkBtn");
 
 priorityBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
@@ -89,6 +90,20 @@ doneBtns.forEach(function(btn, j){
             cards[j].style.color = "grey";
             cards[j].style.boxShadow = "0px 0px 0px rgba(102, 95, 87, 0.5)";
             cards[j].style.opacity = "0.5";
+        }
+    })
+})
+
+bookmarkBtns.forEach(function(btn, j){
+    btn.addEventListener("click", function(){
+        if (btn.classList.contains("bi-bookmark")) {
+            btn.classList.remove("bi-bookmark");
+            btn.classList.add("bi-bookmark-fill");
+            btn.style.color = "red";
+        } else {
+            btn.classList.remove("bi-bookmark-fill");
+            btn.classList.add("bi-bookmark");
+            btn.style.color = "black";
         }
     })
 })
