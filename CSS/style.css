@@ -11,10 +11,14 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
 }
 
 .myNavbar {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid darkgrey;
 }
 .myNavbar #listTaskSymbol {
   font-size: 1.5rem;
+}
+
+#littleTaskText {
+  border: 1px solid darkgrey;
 }
 
 #headline {
@@ -22,7 +26,7 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
   background-image: url("../images/headline-bg-img.jpg");
   background-size: cover;
   background-position: center center;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid darkgrey;
   position: relative;
 }
 
@@ -58,6 +62,7 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
   text-decoration: none;
 }
 .myCard hr {
+  border-top: 1px solid darkgrey;
   margin: 0.5rem 0rem;
 }
 .myCard .myBookmarkBtn, .myCard .myThreeDots {
@@ -70,7 +75,7 @@ body, #littleTaskText, .myNavbar, .myCard, #footerID {
 }
 
 #footerID {
-  border-top: 1px solid grey;
+  border-top: 1px solid darkgrey;
 }
 #footerID i {
   font-size: 1.2rem;

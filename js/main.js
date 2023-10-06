@@ -4,11 +4,19 @@ let obj1 = JSON.parse(tasks);
 
 function createCards() {
     for(let i = 0; i < obj1.length; i++) {
+
+        let importanceClass = "btn-success";
+        if (obj1[i].importance === 2 || obj1[i].importance === 3) {
+            importanceClass = "btn-warning";
+        } else if (obj1[i].importance >= 4) {
+            importanceClass = "btn-danger";
+        }
+
         resultDiv.innerHTML += `    
         <div class="card py-3 mx-2 myCard d-flex flex-column justify-content-between">
             <div>
                 <div class="d-flex justify-content-between">
-                    <p class="h6 border border-black rounded p-1" id="littleTaskText">Task</p>
+                    <div class="h6 rounded p-1" id="littleTaskText">Task</div>
                     <div class="d-flex justify-content-end">
                         <i class="bi bi-bookmark myBookmarkBtn"></i>
                         <i class="bi bi-three-dots-vertical ms-2 myThreeDots"></i>
@@ -21,7 +29,7 @@ function createCards() {
             <div>
                 <hr>
                 <p class="h6 card-text">
-                    <i class="bi bi-exclamation-triangle-fill"></i> Importance level: <span class="btn btn-success myImportanceBtn">${obj1[i].importance}</span>
+                    <i class="bi bi-exclamation-triangle-fill"></i> Importance level: <span class="btn ${importanceClass} myImportanceBtn">${obj1[i].importance}</span>
                 </p>
                 <p class="h6 card-text">Deadline: ${obj1[i].deadline}</p>
                 <hr>
