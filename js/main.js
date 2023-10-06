@@ -29,6 +29,7 @@ for(let i = 0; i < obj1.length; i++) {
     `;
 }
 
+const cards = document.querySelectorAll(".myCard");
 const priorityBtns = document.querySelectorAll(".myPriorityBtn");
 const deleteBtns = document.querySelectorAll(".myDeleteBtn");
 const doneBtns = document.querySelectorAll(".myDoneBtn");
@@ -50,5 +51,15 @@ priorityBtns.forEach(function(btn, j){
         } else {
             console.log(`${obj1[j].taskName} max. priority reached!`)
         }        
+    })
+})
+
+
+
+deleteBtns.forEach(function(btn, j){
+    btn.addEventListener("click", function(){
+        cards[j].style.opacity = "0";
+        cards[j].style.transition = "1s all linear";
+        setTimeout(() => {cards[j].remove();}, 1100);
     })
 })
