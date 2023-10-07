@@ -1,19 +1,7 @@
 const resultDiv = document.getElementById("resultDiv");
-let colorArray = []; // to save the importance colors
-let bookmarkedArray = []; // to save the bookmarked status
-let importanceClass = "btn-success";
-let bookmarkedClass = "bi bi-bookmark";
 
 // parse the data from the JSON string
 let obj1 = JSON.parse(tasks);
-
-for(let k = 0; k < obj1.length; k++){
-    colorArray[k] = "btn-success";
-    bookmarkedArray[k] = "bi bi-bookmark";
-}
-
-// console.log(colorArray);
-// console.log(bookmarkedArray);
 
 // create cards functin via loop through array length
 function createCards() {
@@ -50,13 +38,10 @@ function createCards() {
 }
 // check importance & choose color accordingly
 function checkImportance(i){
-    // let importanceClass = "btn-success";
-    // colorArray[i] = "btn-success";
+    let importanceClass = "btn-success";
     if (obj1[i].importance === 2 || obj1[i].importance === 3) {
-        colorArray[i] = "btn-warning";
         importanceClass = "btn-warning";
     } else if (obj1[i].importance >= 4) {
-        colorArray[i] = "btn-danger";
         importanceClass = "btn-danger";
     }
     return importanceClass
@@ -64,16 +49,7 @@ function checkImportance(i){
 
 // check if bookmarked or not
 function isBookmarked(i) {
-    // let bookmarkedClass = "bi bi-bookmark";
-    // bookmarkedArray[i] = "bi bi-bookmark";
-    if (obj1[i].isBookmarked == "bi bi-bookmark-fill") {
-        bookmarkedArray[i] = "bi bi-bookmark-fill";
-        bookmarkedClass = "bi bi-bookmark-fill";
-    } else {
-        bookmarkedArray[i] = "bi bi-bookmark";
-        bookmarkedClass = "bi bi-bookmark";
-    }
-    return bookmarkedClass;
+    return obj1[i].isBookmarked ? "bi bi-bookmark-fill" : "bi bi-bookmark";
 }
 
 // call create cards function
@@ -82,21 +58,8 @@ createCards();
 // sorting cards according to importance
 const sortBtn = document.querySelector(".mySortingBtn");
 sortBtn.addEventListener("click", function(){
-    console.log("Sorting ...");
-    console.log(colorArray);
-    console.log(bookmarkedArray);
-    // save the arrays in the local storage
-    localStorage.setItem('importance', JSON.stringify(colorArray));
-    localStorage.setItem('isBookmarked', JSON.stringify(bookmarkedArray));
-
-    console.log("saving in localStorage");
-    console.log(localStorage.importance);
-    console.log(localStorage.isBookmarked);
-
-    // sort the cards
     obj1 = obj1.sort((a, b) => b.importance - a.importance);
     resultDiv.innerHTML = " ";
-
     createCards();
 })
 
@@ -110,26 +73,19 @@ const bookmarkBtns = document.querySelectorAll(".myBookmarkBtn");
 // importance button
 importanceBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
-        if (obj1[j].importance == 3 ) {
+        if (obj1[j].importance == 4 || obj1[j].importance == 3 ) {
             btn.classList.remove("btn-warning");
             btn.classList.add("btn-danger");
-            colorArray[j] = "btn-danger";
-        } else if (obj1[j].importance == 1) {
+        } else if (obj1[j].importance < 3 && obj1[j].importance > 0) {
             btn.classList.remove("btn-success");
             btn.classList.add("btn-warning");
-            colorArray[j] = "btn-warning";
-        } else if (obj1[j].importance == 0) {
-            btn.classList.remove("btn-success");
-            btn.classList.add("btn-success");
-            colorArray[j] = "btn-success";
         }
-        // console.log("colorArray [" + j + "]: " + colorArray[j]);
 
         if(obj1[j].importance < 5){
             obj1[j].importance++;
             this.innerHTML = obj1[j].importance;
         } else {
-            console.log(`${obj1[j].taskName} max. importance reached!`);
+            console.log(`${obj1[j].taskName} max. importance reached!`)
         }        
     })
 })
@@ -166,14 +122,12 @@ bookmarkBtns.forEach(function(btn, j){
         if (btn.classList.contains("bi-bookmark")) {
             btn.classList.remove("bi-bookmark");
             btn.classList.add("bi-bookmark-fill");
-            bookmarkedArray[j] = "bi-bookmark-fill";
             btn.style.transform = "scaleY(3)";
             btn.style.transition = "0.5s all linear";
             btn.style.color = "#dc3545";
         } else {
             btn.classList.remove("bi-bookmark-fill");
             btn.classList.add("bi-bookmark");
-            bookmarkedArray[j] = "bi-bookmark";
             btn.style.transform = "scaleY(1)";
             btn.style.transition = "0.5s all linear";
             btn.style.color = "black";
