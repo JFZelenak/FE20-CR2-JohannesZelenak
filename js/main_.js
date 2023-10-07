@@ -1,19 +1,20 @@
 const resultDiv = document.getElementById("resultDiv");
-let colorArray = []; // to save the importance colors
-let importanceArray = []; // to save the importance values
-let bookmarkedArray = []; // to save the bookmarked status
 let importanceClass = "btn-success";
 let bookmarkedClass = "bi bi-bookmark";
 
 // parse the data from the JSON string
 let obj1 = JSON.parse(tasks);
+let colorArray = JSON.parse(localStorage.getItem("color")); // to save the importance colors
+let importanceArray = JSON.parse(localStorage.getItem("importance")); // to save the importance values
+let bookmarkedArray = JSON.parse(localStorage.getItem("isBookmarked")); // to save the bookmarked status
 
 // create default arrays with correct length
 for(let k = 0; k < obj1.length; k++){
-    colorArray[k] = "btn-success";
-    importanceArray[k] = 0;
-    bookmarkedArray[k] = "bi bi-bookmark";
+    obj1[k].importance = importanceArray[k];
+    obj1[k].isBookmarked = bookmarkedArray[k];
 }
+
+console.log(obj1);
 
 // create cards functin via loop through array length
 function createCards() {
@@ -51,11 +52,11 @@ function createCards() {
 // check importance & choose color accordingly
 function checkImportance(i){
     if (obj1[i].importance === 2 || obj1[i].importance === 3) {
-        colorArray[i] = "btn-warning";
         importanceClass = "btn-warning";
     } else if (obj1[i].importance >= 4) {
-        colorArray[i] = "btn-danger";
         importanceClass = "btn-danger";
+    } else if (obj1[i].importance === 0 || obj1[i].importance === 1){
+        importanceClass = "btn-success";
     }
     return importanceClass
 }
@@ -73,6 +74,9 @@ function isBookmarked(i) {
 }
 
 // call create cards function
+obj1 = obj1.sort((a, b) => b.importance - a.importance);
+resultDiv.innerHTML = " ";
+
 createCards();
 
 // sorting cards according to importance
@@ -85,7 +89,7 @@ sortBtn.addEventListener("click", function(){
     localStorage.setItem('isBookmarked', JSON.stringify(bookmarkedArray));
 
     // go to second page
-    window.location.href = './index_.html';
+    window.location.reload();
 })
 
 const cards = document.querySelectorAll(".myCard");
@@ -98,7 +102,7 @@ const bookmarkBtns = document.querySelectorAll(".myBookmarkBtn");
 // importance button
 importanceBtns.forEach(function(btn, j){
     btn.addEventListener("click", function(){
-        if (obj1[j].importance == 3) {
+        if (obj1[j].importance == 3 ) {
             btn.classList.remove("btn-warning");
             btn.classList.add("btn-danger");
             colorArray[j] = "btn-danger";
